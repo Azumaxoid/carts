@@ -27,6 +27,7 @@ echo $CODE_DIR
 $DOCKER_CMD run --rm -v $HOME/.m2:/root/.m2 -v $CODE_DIR:/usr/src/mymaven -w /usr/src/mymaven maven:3.2-jdk-8 mvn -q -DskipTests package
 
 cp $CODE_DIR/target/*.jar $CODE_DIR/docker/carts
+cp -r $CODE_DIR/newrelic/ $CODE_DIR/docker/carts/newrelic
 
 for m in ./docker/*/; do
     REPO=${GROUP}/$(basename $m)
